@@ -4,7 +4,7 @@
 #
 Name     : R-RcppGSL
 Version  : 0.3.7
-Release  : 2
+Release  : 3
 URL      : https://cran.r-project.org/src/contrib/RcppGSL_0.3.7.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/RcppGSL_0.3.7.tar.gz
 Summary  : 'Rcpp' Integration for 'GNU GSL' Vectors and Matrices
@@ -17,7 +17,16 @@ BuildRequires : buildreq-R
 BuildRequires : gsl-dev
 
 %description
-## RcppGSL [![Build Status](https://travis-ci.org/eddelbuettel/rcppgsl.svg)](https://travis-ci.org/eddelbuettel/rcppgsl) [![License](http://img.shields.io/badge/license-GPL%20%28%3E=%202%29-brightgreen.svg?style=flat)](http://www.gnu.org/licenses/gpl-2.0.html) [![CRAN](http://www.r-pkg.org/badges/version/RcppGSL)](https://cran.r-project.org/package=RcppGSL) [![Downloads](http://cranlogs.r-pkg.org/badges/RcppGSL?color=brightgreen)](http://www.r-pkg.org/pkg/RcppGSL)
+The 'GNU Scientific Library' (or 'GSL') is a collection of numerical routines for
+ scientific computing. It is particularly useful for C and C++ programs as it
+ provides a standard C interface to a wide range of mathematical routines. There
+ are over 1000 functions in total with an extensive test suite. The 'RcppGSL'
+ package provides an easy-to-use interface between 'GSL' data structures and
+ R using concepts from 'Rcpp' which is itself a package that eases the
+ interfaces between R and C++. This package also serves as a prime example of
+ how to build a package that uses 'Rcpp' to connect to another third-party
+ library. The 'autoconf' script, 'inline' plugin and example package can all
+ be used as a stanza to  write a similar package against another library.
 
 %package lib
 Summary: lib components for the R-RcppGSL package.
@@ -29,21 +38,22 @@ lib components for the R-RcppGSL package.
 
 %prep
 %setup -q -c -n RcppGSL
+cd %{_builddir}/RcppGSL
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1579194600
+export SOURCE_DATE_EPOCH=1589517462
 
 %install
-export SOURCE_DATE_EPOCH=1579194600
+export SOURCE_DATE_EPOCH=1589517462
 rm -rf %{buildroot}
 export LANG=C.UTF-8
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
-export FCFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
-export FFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
+export FCFLAGS="$FFLAGS -O3 -flto -fno-semantic-interposition "
+export FFLAGS="$FFLAGS -O3 -flto -fno-semantic-interposition "
 export CXXFLAGS="$CXXFLAGS -O3 -flto -fno-semantic-interposition "
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
