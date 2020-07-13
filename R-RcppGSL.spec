@@ -4,7 +4,7 @@
 #
 Name     : R-RcppGSL
 Version  : 0.3.8
-Release  : 4
+Release  : 5
 URL      : https://cran.r-project.org/src/contrib/RcppGSL_0.3.8.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/RcppGSL_0.3.8.tar.gz
 Summary  : 'Rcpp' Integration for 'GNU GSL' Vectors and Matrices
